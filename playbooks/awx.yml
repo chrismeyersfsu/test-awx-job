@@ -16,3 +16,11 @@
 
     - name: add second host to group
       command: "{{ playbook_dir }}/venv/bin/tower-cli host associate --host bygroup --group testgroup"
+
+    - debug: var=test_var
+
+- name: output debugging
+  hosts: all
+  gather_facts: false
+  tasks:
+    - debug: var=test_var

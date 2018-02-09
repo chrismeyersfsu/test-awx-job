@@ -11,6 +11,8 @@
       add_host:
         name: byhost
 
+    - debug: var=test_var
+
 - name: test output
   hosts: all
   gather_facts: false
