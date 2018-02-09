@@ -1,0 +1,6 @@
+localhost
+byhost
+bygroup
+
+[testgroup]
+bygroup

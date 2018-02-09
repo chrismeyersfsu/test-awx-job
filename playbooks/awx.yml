@@ -1,0 +1,15 @@
+- name: add hosts
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: add group
+      command: tower-cli group create -n testgroup
+
+    - name: add first host
+      command: tower-cli host create -n byhost
+
+    - name: add second host
+      command: tower-cli host create -n bygroup
+
+    - name: add second host to group
+      command: tower-cli host associate --host bygroup --group testgroup

@@ -1,0 +1,19 @@
+- name: configure hosts
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: add bygroup host
+      add_host:
+        name: bygroup
+        groups: testgroup
+
+    - name: add byhost host
+      add_host:
+        name: byhost
+
+- name: test output
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: output
+      debug: var=test_var
