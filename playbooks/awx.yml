@@ -2,14 +2,17 @@
   hosts: all
   gather_facts: false
   tasks:
+    - name: install tower-cli
+      pip: virtualenv={{ playbook_dir }}/venv state=present name=ansible-tower-cli
+
     - name: add group
-      command: tower-cli group create -n testgroup
+      command: "{{ playbook_dir }}/venv/bin/tower-cli group create -n testgroup"
 
     - name: add first host
-      command: tower-cli host create -n byhost
+      command: "{{ playbook_dir }}/venv/bin/tower-cli host create -n byhost"
 
     - name: add second host
-      command: tower-cli host create -n bygroup
+      command: "{{ playbook_dir }}/venv/bin/tower-cli host create -n bygroup"
 
     - name: add second host to group
-      command: tower-cli host associate --host bygroup --group testgroup
+      command: "{{ playbook_dir }}/venv/bin/tower-cli host associate --host bygroup --group testgroup"
